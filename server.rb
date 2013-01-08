@@ -6,7 +6,7 @@ class GaragioServer < Sinatra::Base
   set :haml, :format => :html5 # default Haml format is :xhtml
 
   def wifly
-    $wifly ||= WiFly.new("192.168.1.45", 2000)
+    $wifly ||= WiFly.new(CONFIG[:address], CONFIG[:port])
   end
 
   get '/' do
