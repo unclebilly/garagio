@@ -5,16 +5,19 @@ require File.expand_path("../init", __FILE__)
 class GaragioServer < Sinatra::Base
   set :haml, :format => :html5 # default Haml format is :xhtml
 
-  def wifly
-    $wifly ||= WiFly.new(CONFIG[:address], CONFIG[:port])
+  class << self
+    def wifly
+      @wifly ||= WiFly.new(CONFIG[:address], CONFIG[:port])
+    end
   end
 
   get '/' do
+    @door_state = self.class.wifly.door_state
     haml :index
   end
 
-  get '/toggle' do
-    wifly.toggle
+  get '/lites' do
+    self.class.wifly.lites
     redirect "/"
   end
 

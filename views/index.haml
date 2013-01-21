@@ -1,2 +1,12 @@
-%h1 GARAGIO
-%a{:href => "/toggle"} Toggle 
+!!! html
+%html
+  %head
+  %body
+
+    %h1 GARAGIO
+    %a{:href => "/lites"} Toggle lights
+
+    %h2= "Garage is #{@door_state}"
+
+    %div
+      %div{:class => @door_state}
