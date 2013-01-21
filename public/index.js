@@ -11,4 +11,4 @@ setInterval(function() {
       $("#garage_state").text(data);
     }
   });
-}, 1000);
+}, 5000);

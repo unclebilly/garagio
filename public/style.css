@@ -1,15 +1,14 @@
 body { 
-  padding: 20px;
 }
 
 table { 
   border: 2px solid black;
-  width: 70%;
+  width: 100%;
   padding: 5px;
 }
 
 table.closed { 
-  height: 400px;
+  height: 300px;
   background: green;
 }
 table.open {
