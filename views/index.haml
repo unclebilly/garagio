@@ -1,12 +1,21 @@
 !!! html
 %html
   %head
+    %link{:rel=>"stylesheet", :href => "/style.css"}
+    %script{:src => "/jquery-1.9.0.min.js"}
+    %script{:src => "/index.js"}
   %body
+    %h1 
+      Garage is 
+      %span#garage_state= @door_state
 
-    %h1 GARAGIO
-    %a{:href => "/lites"} Toggle lights
-
-    %h2= "Garage is #{@door_state}"
-
-    %div
-      %div{:class => @door_state}
+    %table#garage_door{:class => @door_state}
+      %tr
+        %td
+        %td
+      %tr
+        %td
+        %td
+      %tr
+        %td
+        %td

@@ -16,6 +16,10 @@ class GaragioServer < Sinatra::Base
     haml :index
   end
 
+  get '/door_state' do
+    self.class.wifly.door_state
+  end
+
   get '/lites' do
     self.class.wifly.lites
     redirect "/"

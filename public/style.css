@@ -1,0 +1,22 @@
+body { 
+  padding: 20px;
+}
+
+table { 
+  border: 2px solid black;
+  width: 70%;
+  padding: 5px;
+}
+
+table.closed { 
+  height: 400px;
+  background: green;
+}
+table.open {
+  height: 75px;
+  background: red;
+}
+
+table tr td { 
+  border: 1px solid black;
+}
