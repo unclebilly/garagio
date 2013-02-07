@@ -12,4 +12,6 @@ you need to disable the "alternate function" of GPIO pins 4,5, and 6 for this pr
 LED).  This disables the little LED lights on the WiFly board, which opens up the
 pins for other functionality (such as powering a relay).  Since there are no more
 LED's on the board, the power indicator LED external to the board is necessary.
-  set sys iofunc 0x07 
+```
+set sys iofunc 0x07
+```
