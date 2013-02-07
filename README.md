@@ -1,10 +1,15 @@
 A Fun Project with my WiFly
 ===========================
 
-I'm using a WiFly RN-XV (rev 3) with a wire antenna.  I'm following [a 
+This project is a web application to open and close a garage door on my
+LAN. 
+
+
+I am using a [WiFly RN-XV](http://www.rovingnetworks.com/products/RN171XV) 
+with a wire antenna for WiFi connectivity.  I'm following [a 
 tutorial for a DIY garage door opener](http://www.dinnovative.com/?p=163).
 
-Hopefully, I won't fry my garage door opener or my WiFly in the process. 
+Hopefully, I won't fry my garage door opener or my WiFly in the process!
 
 One thing that tripped me up was that the original author never mentioned that 
 you need to disable the "alternate function" of GPIO pins 4,5, and 6 for this project
