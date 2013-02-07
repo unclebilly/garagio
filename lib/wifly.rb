@@ -1,12 +1,13 @@
 require 'socket'
 
 class WiFly
-  PROMPT = "<2.32> "
-  attr_accessor :address, :port
+  PROMPT = "<#{CONFIG[:firmware_version]}> "
+  attr_accessor :address, :port, :logger
 
-  def initialize(address=CONFIG[:address], port=CONFIG[:port])
-    self.address = address
-    self.port = port
+  def initialize(opts)
+    self.address = opts[:address] || CONFIG[:address]
+    self.port = opts[:port] || CONFIG[:port]
+    self.logger = opts[:logger]
     socket.write('$$$\r')
     socket.read(12) # "*HELLO*CMD\r\n"
   end
@@ -34,6 +35,16 @@ class WiFly
     str.gsub(cmd,'').gsub(PROMPT,'').strip
   end
 
+  def high_pins
+    io=read_io
+                    #"8d08"   36104   "1000110100001000"   make it 16 bits
+    binary_string = io       .hex     .to_s(2)             .rjust(io.size*4, '0')
+    binary_string.reverse.split("").each_with_index.map do |value, pin|
+      pin if value == "1"
+    end.compact
+    
+  end
+
   def socket
     @socket ||= Socket.tcp(address, port)
   end
@@ -46,8 +57,11 @@ class WiFly
   # Since the string is predictable, we can do a blocking read.
   def send_command(str, return_len=0)
     str += "\r"
+    logger.info("Writing '#{str}' to socket") if logger
     socket.write(str)
-    socket.read(str.length + "\r\n#{PROMPT}".length + return_len)
+    socket.read(str.length + "\r\n#{PROMPT}".length + return_len).tap do |s|
+      logger.info("Read '#{s}' from socket") if logger
+    end
   end
 
 end
