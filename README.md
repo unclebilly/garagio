@@ -1,8 +1,7 @@
-A Fun Project with my WiFly
+Garagio
 ===========================
 
-This project is a web application to open and close a garage door on my
-LAN. 
+This project is a web interface to open and close a garage door. 
 
 
 I am using a [WiFly RN-XV](http://www.rovingnetworks.com/products/RN171XV) 
