@@ -45,8 +45,16 @@ class WiFly
     
   end
 
-  def set_high(pin)
-        
+  def set_high
+    return_length = "\r\nAOK".length 
+    send_command "set sys output 0x0010 0x0010", return_length
+
+  end
+
+  def set_low
+    return_length = "\r\nAOK".length 
+    send_command "set sys output 0x0000 0x0010", return_length
+
   end
 
   def socket
