@@ -4,7 +4,7 @@ class WiFly
   PROMPT = "<#{CONFIG[:firmware_version]}> "
   attr_accessor :address, :port, :logger
 
-  def initialize(opts)
+  def initialize(opts={})
     self.address = opts[:address] || CONFIG[:address]
     self.port = opts[:port] || CONFIG[:port]
     self.logger = opts[:logger]
@@ -43,6 +43,10 @@ class WiFly
       pin if value == "1"
     end.compact
     
+  end
+
+  def set_high(pin)
+        
   end
 
   def socket
