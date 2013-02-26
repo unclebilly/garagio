@@ -8,19 +8,10 @@ class WiFly
     self.address = opts[:address] || CONFIG[:address]
     self.port = opts[:port] || CONFIG[:port]
     self.logger = opts[:logger]
+    
+    # enter command mode
     socket.write('$$$\r')
     socket.read(12) # "*HELLO*CMD\r\n"
-  end
-
-  def lites
-    send_command("lites")
-  end
-
-  # Human-readable status of the pin we have connected
-  # the reed switch to
-  def door_state
-    raw_state = read_io 
-    raw_state[-1] == "8" ? "open" : "closed"
   end
 
   # Get the status of all IO pins on wifly
@@ -35,26 +26,30 @@ class WiFly
     str.gsub(cmd,'').gsub(PROMPT,'').strip
   end
 
+  # Get an array of the pin numbers that have high voltage.
   def high_pins
     io=read_io
-                    #"8d08"   36104   "1000110100001000"   make it 16 bits
+                    #"0x8d08" 36104   "1000110100001000"   make it 16 bits
     binary_string = io       .hex     .to_s(2)             .rjust(io.size*4, '0')
     binary_string.reverse.split("").each_with_index.map do |value, pin|
       pin if value == "1"
-    end.compact
-    
+    end.compact 
   end
 
-  def set_high
+  # Set a given pin to high. Pins are counted (0-start) on a binary 
+  # number from right to left (100 is pin 2).
+  def set_high(pin)
+    hex = pin_to_hex(pin)
     return_length = "\r\nAOK".length 
-    send_command "set sys output 0x0010 0x0010", return_length
-
+    send_command "set sys output #{hex} #{hex}", return_length
   end
 
-  def set_low
+  # Set a given pin to low.  Pins are counted (0-start) on a binary 
+  # number from right to left (100 is pin 2).
+  def set_low(pin)
+    hex = pin_to_hex(pin)
     return_length = "\r\nAOK".length 
-    send_command "set sys output 0x0000 0x0010", return_length
-
+    send_command "set sys output 0x0000 #{hex}", return_length
   end
 
   def socket
@@ -62,7 +57,13 @@ class WiFly
   end
 
   private
-  
+
+  # pin 7 => 0b10000000 => 0x80
+  # pin 4 => 0b10000    => 0x10
+  def pin_to_hex(num)
+    "0x%02x" % "1".ljust(num+1, "0").to_i(2)
+  end
+
   # The wifly echoes back the command (with carriage return)
   # plus another CRLF and the command prompt string.
   # Something like "lites\r\r\n<2.32> "
