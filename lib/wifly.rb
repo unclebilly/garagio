@@ -14,6 +14,17 @@ class WiFly
     socket.read(12) # "*HELLO*CMD\r\n"
   end
 
+  def door_state
+    high_pins.include?(CONFIG[:door_state_pin]) ? :open : :closed
+  end
+
+  def toggle_door
+    pin = CONFIG[:relay_pin]
+    set_high(pin)
+    sleep 1
+    set_low(pin)
+  end
+
   # Get the status of all IO pins on wifly
   def read_io
     cmd = "show io\r"

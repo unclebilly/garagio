@@ -7,7 +7,7 @@ class GaragioServer < Sinatra::Base
 
   class << self
     def wifly
-      @wifly ||= WiFly.new(CONFIG[:address], CONFIG[:port])
+      @wifly ||= WiFly.new
     end
   end
 
@@ -17,11 +17,12 @@ class GaragioServer < Sinatra::Base
   end
 
   get '/door_state' do
-    self.class.wifly.door_state
+    content_type 'text/plain'
+    self.class.wifly.door_state.to_s
   end
 
-  get '/lites' do
-    self.class.wifly.lites
+  get '/toggle' do
+    self.class.wifly.toggle_door
     redirect "/"
   end
 

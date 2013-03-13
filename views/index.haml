@@ -21,3 +21,6 @@
       %tr
         %td
         %td
+
+    %form{:action => "/toggle"}
+      %input{:type =>"submit", :value => @door_state.to_s == 'open' ? "Close door" : "Open door"}
