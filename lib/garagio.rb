@@ -27,7 +27,7 @@ class Garagio < Sinatra::Base
   end
 
   ##
-  # Note to self: when you put the neodynium magnet near the relay, it tends to not 
+  # Note to self: when you put the neodymium magnet near the relay, it tends to not 
   # work!
   #
   def toggle_door
