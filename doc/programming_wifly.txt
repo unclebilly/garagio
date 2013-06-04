@@ -1,0 +1,15 @@
+# turn off wifly
+# set ad-hoc pin to high
+# turn on wifly
+# connect wireless client to wifly AP
+
+$ telnet 169.254.1.1 2000
+$$$
+set wlan auth 4 # wpa2/aes
+set wlan ssid [SSID]
+set wlan passphrase [PASSWORD]
+save
+
+# turn off wifly
+# set ad-hoc pin low
+# turn on wifly
