@@ -39,6 +39,4 @@ class Garagio < Sinatra::Base
   def door_state
     self.class.wifly.read_pin(CONFIG[:door_state_pin]) == 0 ? "closed" : "open"
   end
-
-  run! if app_file == $0
 end

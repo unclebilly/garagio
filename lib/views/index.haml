@@ -11,16 +11,8 @@
       Garage is 
       %span#garage_state= @door_state
 
-    %table#garage_door{:class => @door_state}
-      %tr
-        %td
-        %td
-      %tr
-        %td
-        %td
-      %tr
-        %td
-        %td
+    #garage
+      %img#garage_door{:class => @door_state, :src => "/closed.jpg"}
 
     %form{:action => "/toggle"}
       %input{:type =>"submit", :value => @door_state.to_s == 'open' ? "Close door" : "Open door"}

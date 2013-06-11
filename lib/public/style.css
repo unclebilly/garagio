@@ -6,14 +6,22 @@ table {
   width: 100%;
   padding: 5px;
 }
-
-table.closed { 
-  height: 300px;
-  background: green;
+#garage {
+  background: #000;
+  width: 100%;
+  min-height: 300px;
+  position: relative;
+  overflow: hidden;
 }
-table.open {
-  height: 75px;
-  background: red;
+
+#garage_door { 
+  width: 100%;
+}
+#garage_door.open {
+  height: 140px;
+  position: absolute;
+  top: -100px;
+  left: 0;
 }
 
 table tr td { 
