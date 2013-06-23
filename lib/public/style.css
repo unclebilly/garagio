@@ -1,29 +1,15 @@
 body { 
 }
 
-table { 
-  border: 2px solid black;
-  width: 100%;
-  padding: 5px;
-}
-#garage {
-  background: #000;
-  width: 100%;
-  min-height: 300px;
-  position: relative;
-  overflow: hidden;
-}
 
-#garage_door { 
-  width: 100%;
-}
-#garage_door.open {
-  height: 140px;
-  position: absolute;
-  top: -100px;
-  left: 0;
-}
-
-table tr td { 
-  border: 1px solid black;
+@media screen and (max-width:480px) {
+  #opener { 
+    cursor: pointer;
+    width: 100%;
+    height: 200px;
+    background: blue;
+    border: 1px solid navy;
+    color: white;
+    font-size: 4em;
+  }
 }
