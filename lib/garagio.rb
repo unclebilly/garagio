@@ -8,7 +8,7 @@ class Garagio < Sinatra::Base
   before do
     error 401 unless params[:auth_token] == CONFIG[:auth_token]
   end
-  
+
   class << self
     def wifly
       @wifly ||= Wifly::Control.new(CONFIG[:address], CONFIG[:port], CONFIG[:firmware_version])
@@ -27,7 +27,7 @@ class Garagio < Sinatra::Base
 
   get '/toggle' do
     toggle_door
-    redirect "/"
+    redirect "/?auth_token=#{@params[:auth_token]}"
   end
 
   ##

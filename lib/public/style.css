@@ -1,15 +1,46 @@
 body { 
+  background: #fe9945;
+  padding: 0;
+  margin: 0;
 }
 
+header { 
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-family: Verdana, Helvetica, Sans-serif;
+  text-align: center;
+  height: 20%;
+}
 
-@media screen and (max-width:480px) {
-  #opener { 
-    cursor: pointer;
-    width: 100%;
-    height: 200px;
-    background: blue;
-    border: 1px solid navy;
-    color: white;
-    font-size: 4em;
-  }
+section { 
+  padding: 0;
+  margin: 0;
+  height: 80%;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+section form { 
+  padding: 0; 
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: blue;
+}
+
+#opener { 
+  margin: 0px;
+  cursor: pointer;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  background: blue;
+  color: white;
+  font-size: 4em;
+}
+
+#opener:active {
+  background: navy;
 }

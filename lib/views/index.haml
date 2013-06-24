@@ -1,9 +1,8 @@
-!!! html
+!!! html 5
 %html
   %head
     %link{:rel=>"stylesheet", :href => "/style.css"}
     %script{:src => "/jquery-1.9.0.min.js"}
-    %script{:src => "/index.js"}
     %meta{:content=>'initial-scale = 1.0', :name=>'viewport'}
     %meta{:content=>'width = device-width', :name=>'viewport'}
     %link{:href=>"apple-touch-icon-precomposed.png", :rel => "apple-touch-icon-precomposed"}
@@ -12,9 +11,15 @@
     %link{:href=>"apple-touch-icon-144x144-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "144x144"}
 
   %body
-    %h1 
-      Garage is 
-      %span#garage_state= @door_state
+    %header
+      %h1
+        Garage is 
+        %b#garage_state= @door_state
 
-    %form{:action => "/toggle"}
-      %input#opener{:type =>"submit", :value => @door_state.to_s == 'open' ? "Close" : "Open"}
+    %section
+      %form{:action => "/toggle"}
+        %input{:id => "auth_token", :type => "hidden", :name => "auth_token", :value => @params[:auth_token]}
+        %button#opener{:type =>"submit"}
+          %img{:src => "remote_icon.png", :alt => @door_state.to_s == 'open' ? "Close" : "Open"}
+
+    %script{:src => "/index.js"}
