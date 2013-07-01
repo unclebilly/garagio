@@ -11,14 +11,16 @@
     %link{:href=>"apple-touch-icon-144x144-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "144x144"}
 
   %body
+    =styled_flash
     %header
       %h1
         Garage is 
         %b#garage_state= @door_state
 
     %section
-      %form{:action => "/toggle"}
+      %form{:action => "/toggle", :id => "door_form", :method => "post"}
         %input{:id => "auth_token", :type => "hidden", :name => "auth_token", :value => @params[:auth_token]}
+        %input{:id => "passcode", :name => "passcode", :type => "password"}
         %button#opener{:type =>"submit"}
           %img{:src => "remote_icon.png", :alt => @door_state.to_s == 'open' ? "Close" : "Open"}
 

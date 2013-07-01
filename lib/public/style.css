@@ -3,7 +3,17 @@ body {
   padding: 0;
   margin: 0;
 }
-
+#flash {
+  position: absolute;
+  z-index: 100;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background: red;
+  color: white;
+  font-size: 2em;
+  font-weight: bolder;
+}
 header { 
   padding: 0;
   margin: 0;
