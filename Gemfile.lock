@@ -25,7 +25,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    wifly (0.0.2)
+    wifly (0.0.3)
 
 PLATFORMS
   ruby
