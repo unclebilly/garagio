@@ -16,12 +16,12 @@
       %h1
         Garage is 
         %b#garage_state= @door_state
-
-    %section
       %form{:action => "/toggle", :id => "door_form", :method => "post"}
         %input{:id => "auth_token", :type => "hidden", :name => "auth_token", :value => @params[:auth_token]}
-        %input{:id => "passcode", :name => "passcode", :type => "password"}
-        %button#opener{:type =>"submit"}
-          %img{:src => "remote_icon.png", :alt => @door_state.to_s == 'open' ? "Close" : "Open"}
+        %input{:id => "passcode", :name => "passcode", :type => "password", :placeholder => "Door Code"}
+
+    %section
+      #opener
+        %img{:src => "remote_icon.png", :alt => @door_state.to_s == 'open' ? "Close" : "Open"}
 
     %script{:src => "/index.js"}

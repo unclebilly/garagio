@@ -11,7 +11,9 @@ class TestServer
   end
 
   def accept
+    out "Waiting for connection on #{@port}"
     @client = @socket.accept
+    out "Connected to #{@client}"
     @client.read(Wifly::COMMAND_MODE.length)
     @client.write(Wifly::HELLO)
     detect_input
@@ -20,17 +22,23 @@ class TestServer
   def detect_input
     loop do
       begin
+        out "About to read from client"
         str = @client.read_nonblock(3000)
       rescue Errno::EAGAIN => e
+        out "EAGAIN, waiting for input"
         IO.select([@client])
         retry
+      rescue EOFError => e
+        puts "EOFError: client socket closed"
+        accept
       end
+      out "Read #{str.bytesize} bytes from client"
       dispatch(str)
     end
   end
 
   def dispatch(str)
-    puts "handling #{str}"
+    out "Handling #{str}"
     write = case str
     when /show io/
       str.strip + "\r\r\n#{self.io}\r\n<" + version + "> "
@@ -38,10 +46,10 @@ class TestServer
       self.down = !self.down
       str.strip + "\r\r\nAOK\r\n<" + version + "> "
     else
-      puts "no match for '#{str}'"
+      out "No match for #{str}"
       exit
     end
-    puts write
+    out "About to write #{write}"
     @client.write(write)
     detect_input
   end
@@ -57,6 +65,10 @@ class TestServer
 
   def version
     CONFIG[:firmware_version]
+  end
+
+  def out(str)
+    puts str.gsub(/\n/, '\\n').gsub(/\r/, '\\r')
   end
 
 end

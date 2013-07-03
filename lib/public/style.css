@@ -3,6 +3,7 @@ body {
   padding: 0;
   margin: 0;
 }
+
 #flash {
   position: absolute;
   z-index: 100;
@@ -14,6 +15,7 @@ body {
   font-size: 2em;
   font-weight: bolder;
 }
+
 header { 
   padding: 0;
   margin: 0;
@@ -23,6 +25,12 @@ header {
   height: 20%;
 }
 
+header input {
+  border: 1px solid brown;
+  padding: 5px;
+  font-size: 1.3em;
+}
+
 section { 
   padding: 0;
   margin: 0;
@@ -30,27 +38,13 @@ section {
   position: absolute;
   bottom: 0px;
   width: 100%;
-}
-
-section form { 
-  padding: 0; 
-  margin: 0;
-  width: 100%;
-  height: 100%;
   background: blue;
 }
 
 #opener { 
-  margin: 0px;
+  margin: 20px auto;
+  width: auto;
   cursor: pointer;
   border: 0;
-  width: 100%;
-  height: 100%;
-  background: blue;
-  color: white;
-  font-size: 4em;
-}
-
-#opener:active {
-  background: navy;
+  text-align: center;
 }
