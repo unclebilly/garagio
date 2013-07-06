@@ -18,7 +18,7 @@
         %b#garage_state= @door_state
       %form{:action => "/toggle", :id => "door_form", :method => "post"}
         %input{:id => "auth_token", :type => "hidden", :name => "auth_token", :value => @params[:auth_token]}
-        %input{:id => "passcode", :name => "passcode", :type => "password", :placeholder => "Door Code"}
+        %input{:id => "passcode", :name => "passcode", :type => "tel", :placeholder => "Door Code"}
 
     %section
       #opener
