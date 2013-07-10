@@ -22,13 +22,12 @@ header {
   color: #fff;
   font-family: Verdana, Helvetica, Sans-serif;
   text-align: center;
-  height: 20%;
 }
 
 header input {
   border: 1px solid brown;
-  padding: 5px;
-  font-size: 1.3em;
+  padding: 8px;
+  font-size: 1.4em;
 }
 
 section { 
