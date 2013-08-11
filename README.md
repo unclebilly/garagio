@@ -13,4 +13,4 @@ Here is a screenshot of the garage door app, running on an Android phone. The us
 is expected to enter the code into the text field and then tap the garage
 door opener icon. 
 
-![Garagio screenshot](https://github.com/uncle_billy/gargio/raw/master/doc/pics/garagio_screenshot.png "garagio screenshot")
+![Garagio screenshot](https://raw.github.com/unclebilly/garagio/master/doc/pics/garagio_screenshot.png "garagio screenshot")
