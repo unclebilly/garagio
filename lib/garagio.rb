@@ -12,10 +12,12 @@ class Garagio < Sinatra::Base
     error 401 unless authentic?
   end
 
-  class << self
-    def wifly
-      @wifly ||= Wifly::Control.new(CONFIG[:address], CONFIG[:port], CONFIG[:firmware_version])
-    end
+  after do
+    wifly.close
+  end
+
+  def wifly
+    @wifly ||= Wifly::Control.new(CONFIG[:address], CONFIG[:port])
   end
 
   get '/' do
@@ -40,13 +42,13 @@ class Garagio < Sinatra::Base
   # work!
   #
   def toggle_door
-    self.class.wifly.set_high(CONFIG[:relay_pin])
+    self.wifly.set_high(CONFIG[:relay_pin])
     sleep 1
-    self.class.wifly.set_low(CONFIG[:relay_pin])
+    self.wifly.set_low(CONFIG[:relay_pin])
   end
 
   def door_state
-    self.class.wifly.read_pin(CONFIG[:door_state_pin]) == 0 ? "closed" : "open"
+    self.wifly.read_pin(CONFIG[:door_state_pin]) == 0 ? "closed" : "open"
   end
 
   def authentic?

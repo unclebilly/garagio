@@ -1,7 +1,6 @@
 CONFIG = {
   address: '192.168.1.45',	   # The IP address or hostname of your WiFly device
   port: 2000,				           # The telnet port of your WiFly device
-  firmware_version: '2.38.3',  # The version of firmware running on your WiFly (important)
   relay_pin: 7,                # the pin to open and close the door 
   door_state_pin: 13,          # the pin to figure out if the door is open or closed
   auth_token: 12345,           # Token in url to provide a minimum of security
