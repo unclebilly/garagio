@@ -15,7 +15,7 @@ Git clone this project.
 Install gems with bundler: 
     
     $ bundle install
-    
+
 WiFly Setup
 ===========
 Before you can do anything, you have to connect your WiFly to your wireless network.  
@@ -23,6 +23,8 @@ Before you can do anything, you have to connect your WiFly to your wireless netw
 * Set ad-hoc pin to high.
 * Turn on the WiFly.
 * Connect a wireless client to the WiFly AP.  Run the following commands.  See the manual if you are not using WPA2.
+
+Run the following commands from your favorite terminal: 
 
     telnet 169.254.1.1 2000 # firmware versions ~< 2.3
     telnet 1.2.3.4 2000     # firmware versions ~> 4
