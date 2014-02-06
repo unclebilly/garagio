@@ -12,7 +12,10 @@ relay (instead of switching it directly from the WiFly).
 Installation
 ============
 Git clone this project. 
-
+Install gems with bundler: 
+    
+    $ bundle install
+    
 WiFly Setup
 ===========
 Before you can do anything, you have to connect your WiFly to your wireless network.  
