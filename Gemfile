@@ -1,7 +1,10 @@
-source :rubygems
+source "https://rubygems.org"
 gem "sinatra"
 gem "sinatra-flash"
 gem "haml"
-gem "wifly"
 gem "unicorn"
-gem "pry"
+gem "ruby_spark"
+
+group :development, :test do
+  gem "pry"
+end

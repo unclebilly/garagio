@@ -1,8 +1,7 @@
 CONFIG = {
-  address: '192.168.1.45',	   # The IP address or hostname of your WiFly device
-  port: 2000,				           # The telnet port of your WiFly device
   relay_pin: 7,                # the pin to open and close the door 
-  door_state_pin: 13,          # the pin to figure out if the door is open or closed
-  auth_token: 12345,           # Token in url to provide a minimum of security
+  door_state_pin: 1,           # the pin to figure out if the door is open or closed
+  access_token: 'jkdfh',       # Token from Spark API
+  device_id: 'aabbcc',         # Device ID from Spark API 
   passcode: 12345              # Passcode you must enter to open / close the door      
 }

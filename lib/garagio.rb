@@ -12,12 +12,8 @@ class Garagio < Sinatra::Base
     error 401 unless authentic?
   end
 
-  after do
-    wifly.close
-  end
-
-  def wifly
-    @wifly ||= Wifly::Control.new(CONFIG[:address], CONFIG[:port])
+  def device
+    @device ||= RubySpark::Tinker.new(CONFIG[:device_id])
   end
 
   get '/' do
@@ -34,7 +30,7 @@ class Garagio < Sinatra::Base
     if(validate_passcode)
       toggle_door
     end
-    redirect "/?auth_token=#{@params[:auth_token]}"
+    redirect "/?access_token=#{@params[:access_token]}"
   end
 
   ##
@@ -42,17 +38,17 @@ class Garagio < Sinatra::Base
   # work!
   #
   def toggle_door
-    self.wifly.set_high(CONFIG[:relay_pin])
+    self.device.digital_write(CONFIG[:relay_pin], 'HIGH')
     sleep 1
-    self.wifly.set_low(CONFIG[:relay_pin])
+    self.device.digital_write(CONFIG[:relay_pin], 'LOW')
   end
 
   def door_state
-    self.wifly.read_pin(CONFIG[:door_state_pin]) == 0 ? "closed" : "open"
+    self.device.digital_read(CONFIG[:door_state_pin]) == 'LOW' ? "closed" : "open"
   end
 
   def authentic?
-    params[:auth_token] == CONFIG[:auth_token]
+    true
   end
 
   def validate_passcode
