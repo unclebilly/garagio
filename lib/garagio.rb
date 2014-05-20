@@ -30,7 +30,7 @@ class Garagio < Sinatra::Base
     if(validate_passcode)
       toggle_door
     end
-    redirect "/?access_token=#{@params[:access_token]}"
+    redirect "/"
   end
 
   ##
