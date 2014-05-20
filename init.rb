@@ -3,10 +3,10 @@ require 'bundler'
 
 Bundler.require
 
-require File.expand_path("../config/config", __FILE__)
 $: << File.expand_path("../lib", __FILE__)
+require 'garagio/garagio_config'
 require 'garagio'
 
 RubySpark.configuration do |config|
-  config.access_token = CONFIG[:access_token]
+  config.access_token = GaragioConfig[:access_token]
 end

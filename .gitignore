@@ -1,3 +1,5 @@
 config/config.rb
 log/
 tmp/
+.env
+config/config.yml

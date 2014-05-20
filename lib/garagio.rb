@@ -13,7 +13,7 @@ class Garagio < Sinatra::Base
   end
 
   def device
-    @device ||= RubySpark::Tinker.new(CONFIG[:device_id])
+    @device ||= RubySpark::Tinker.new(GaragioConfig[:device_id])
   end
 
   get '/' do
@@ -38,13 +38,13 @@ class Garagio < Sinatra::Base
   # work!
   #
   def toggle_door
-    self.device.digital_write(CONFIG[:relay_pin], 'HIGH')
+    self.device.digital_write(GaragioConfig[:relay_pin], 'HIGH')
     sleep 1
-    self.device.digital_write(CONFIG[:relay_pin], 'LOW')
+    self.device.digital_write(GaragioConfig[:relay_pin], 'LOW')
   end
 
   def door_state
-    self.device.digital_read(CONFIG[:door_state_pin]) == 'LOW' ? "closed" : "open"
+    self.device.digital_read(GaragioConfig[:door_state_pin]) == 'LOW' ? "closed" : "open"
   end
 
   def authentic?
@@ -52,7 +52,7 @@ class Garagio < Sinatra::Base
   end
 
   def validate_passcode
-    unless params[:passcode].to_s.strip == CONFIG[:passcode].to_s
+    unless params[:passcode].to_s.strip == GaragioConfig[:passcode].to_s
       flash[:fatal] = "Invalid passcode"
       false
     else
