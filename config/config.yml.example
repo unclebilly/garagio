@@ -2,4 +2,6 @@ relay_pin: 7                 # the pin to open and close the door
 door_state_pin: 1            # the pin to figure out if the door is open or closed
 access_token: 'jkdfh'        # Token from Spark API
 device_id: 'aabbcc'          # Device ID from Spark API 
-passcode: 12345              # Passcode you must enter to open / close the door      
+passcode: 12345              # Passcode you must enter to open / close the door
+auth_token: 				 # Password to see the site
+access_token:     			 # Spark device access token	

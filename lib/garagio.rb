@@ -30,7 +30,7 @@ class Garagio < Sinatra::Base
     if(validate_passcode)
       toggle_door
     end
-    redirect "/"
+    redirect "/?auth_token=#{params[:auth_token]}"
   end
 
   ##
@@ -48,7 +48,7 @@ class Garagio < Sinatra::Base
   end
 
   def authentic?
-    true
+    params[:auth_token] == GaragioConfig[:auth_token]
   end
 
   def validate_passcode
